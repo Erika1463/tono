@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Guía para encontrar tu tono de tinte natural ideal con Natura Hue.">
+    <meta name="keywords" content="Tinte, natural, cabello, encontrar tono, quiz">
+    <title>Encontrar Mi Tono - Natura Hue</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-image: url('https://images.ctfassets.net/a8l3ylu84syn/3PUelJKNwzdkAJgWWQr7oe/13cf44c63d53ea2c32dccded1d278639/argan-leaves-magnifying-glass__1_.jpg?fm=webp&q=75');
+            background-size: cover;
+            background-position: center center;
+            background-attachment: fixed;
+            background-repeat: no-repeat;
+            color: #333;
+            font-family: 'Lato', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        nav {
+            background-color: #6D5B4F;
+            text-align: center;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin: 0 15px;
+            font-weight: bold;
+            font-family: 'Montserrat', sans-serif;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #D4BBAA;
+        }
+        .main-container {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px 40px;
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        .section-title {
+            text-align: center;
+            color: #A57F60;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 28px;
+            margin-bottom: 20px;
+        }
+        .quiz-question {
+            margin-bottom: 40px;
+        }
+        .quiz-question h3 {
+            font-family: 'Montserrat', sans-serif;
+            color: #6D5B4F;
+            margin-bottom: 15px;
+        }
+        .options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .option {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+            border: 1px solid #EAE5E1;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            min-height: 100px;
+        }
+        .option:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .color-rubio { background-color: #d2b48c; color: #3b3b3b; }
+        .color-castano-oscuro { background-color: #5d4037; color: #FFFFFF; }
+        .color-negro-actual { background-color: #212121; color: #FFFFFF; }
+        .color-rojizo { background-color: #a14434; color: #FFFFFF; }
+        .coverage-low { background-image: linear-gradient(to right, #616161 75%, #E0E0E0 75%); }
+        .coverage-medium { background-image: linear-gradient(to right, #616161 55%, #E0E0E0 55%); }
+        .coverage-high { background-image: linear-gradient(to right, #616161 30%, #E0E0E0 30%); }
+        .recommendation {
+            background-color: #fff3e0;
+            border: 1px solid #f7c8a3;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 30px;
+            text-align: center;
+            display: none;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            font-size: 14px;
+            color: #6D5B4F;
+            background-color: rgba(234, 229, 225, 0.95);
+            margin-top: 30px;
+        }
+        /* Nueva clase para opción seleccionada */
+        .option.selected {
+            box-shadow: 0 0 0 3px #A57F60;
+            transform: translateY(-3px);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="Web.html">INICIO</a>
+        <a href="productos.html">PRODUCTOS</a>
+        <a href="encontrar-mi-tono.html">ENCONTRAR MI TONO</a>
+        <a href="prueba-de-tonos.html">PRUEBA DE TONOS</a>
+        <a href="ingredientes.html">INGREDIENTES</a>
+        <a href="cuidados.html">CUIDADOS</a>
+        <a href="preguntas-frecuentes.html">PREGUNTAS FRECUENTES</a>
+        <a href="contacto.html">CONTACTO</a>
+    </nav>
+    <main class="main-container">
+        <h2 class="section-title">Descubre Tu Tono Ideal</h2>
+        <p style="text-align:center; margin-bottom: 40px;">Responde estas preguntas para recibir una recomendación personalizada.</p>
+
+        <div class="quiz-question">
+            <h3>1. ¿Cuál es tu color de cabello actual?</h3>
+            <div class="options">
+                <div class="option color-rubio" onclick="selectAnswer(1, 'Rubio o Castaño Claro', event)">Rubio o Castaño Claro</div>
+                <div class="option color-castano-oscuro" onclick="selectAnswer(1, 'Castaño Medio u Oscuro', event)">Castaño Medio u Oscuro</div>
+                <div class="option color-negro-actual" onclick="selectAnswer(1, 'Negro', event)">Negro</div>
+                <div class="option color-rojizo" onclick="selectAnswer(1, 'Rojizo o Teñido', event)">Rojizo o Teñido</div>
+            </div>
+        </div>
+
+        <div class="quiz-question">
+            <h3>2. ¿Qué nivel de cobertura de canas necesitas?</h3>
+            <div class="options">
+                <div class="option coverage-low" onclick="selectAnswer(2, 'Baja (menos del 25% de canas)', event)">Baja (menos del 25% de canas)</div>
+                <div class="option coverage-medium" onclick="selectAnswer(2, 'Media (entre 25% y 50%)', event)">Media (entre 25% y 50%)</div>
+                <div class="option coverage-high" onclick="selectAnswer(2, 'Alta (más del 50%)', event)">Alta (más del 50%)</div>
+                <div class="option" onclick="selectAnswer(2, 'Ninguna, solo quiero brillo', event)">Ninguna, solo quiero brillo</div>
+            </div>
+        </div>
+
+        <div class="recommendation" id="recommendation">
+            <h3>Recomendación Personalizada</h3>
+            <p id="recommendation-text"></p>
+        </div>
+    </main>
+    <footer>
+        &copy; 2025 Natura Hue. Todos los derechos reservados.
+    </footer>
+
+    <script>
+        let answers = {};
+
+        function selectAnswer(questionNumber, answer, event) {
+            answers[questionNumber] = answer;
+
+            // Quitar la clase 'selected' de todas las opciones de esta pregunta
+            const options = event.target.parentElement.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+
+            // Agregar la clase 'selected' a la opción clickeada
+            event.target.classList.add('selected');
+
+            if (answers[1] && answers[2]) {
+                showRecommendation();
+            }
+        }
+
+        function showRecommendation() {
+            const recommendation = document.getElementById('recommendation');
+            const recommendationText = document.getElementById('recommendation-text');
+
+            const color = answers[1];
+            const coverage = answers[2];
+
+            if (color === 'Rubio o Castaño Claro') {
+                if (coverage === 'Ninguna, solo quiero brillo') {
+                    recommendationText.innerHTML = 'Te recomendamos un tono de Castaño Claro con brillo natural.';
+                } else if (coverage === 'Media (entre 25% y 50%)') {
+                    recommendationText.innerHTML = 'Un tono Castaño Oscuro con cobertura media sería ideal para ti.';
+                } else if (coverage === 'Alta (más del 50%)') {
+                    recommendationText.innerHTML = 'Para una cobertura alta, un tono Negro Intenso es perfecto.';
+                } else if (coverage === 'Baja (menos del 25% de canas)') {
+                    recommendationText.innerHTML = 'Un tono Caoba Claro con cobertura baja resaltará tus reflejos rojizos.';
+                }
+            } else if (color === 'Castaño Medio u Oscuro') {
+                if (coverage === 'Ninguna, solo quiero brillo') {
+                    recommendationText.innerHTML = 'Te recomendamos un tono de Castaño Medio manteniendo su brillo y tono natural.';
+                } else if (coverage === 'Media (entre 25% y 50%)') {
+                    recommendationText.innerHTML = 'Un tono Caoba Claro con una mezcla de Castaño Oscuro con cobertura baja resaltará tus reflejos rojizos.';
+                } else if (coverage === 'Alta (más del 50%)') {
+                    recommendationText.innerHTML = 'Para una cobertura alta, un tono Negro Intenso es perfecto.';
+                } else if (coverage === 'Baja (menos del 25% de canas)') {
+                    recommendationText.innerHTML = 'Un tono Caoba Claro con cobertura baja resaltará tus reflejos rojizos junto a un Castaño Claro.';
+                }
+            } else if (color === 'Negro') {
+                if (coverage === 'Ninguna, solo quiero brillo') {
+                    recommendationText.innerHTML = 'Un tono Negro Intenso con brillo natural.';
+                } else if (coverage === 'Media (entre 25% y 50%)') {
+                    recommendationText.innerHTML = 'Un tono Castaño Oscuro con cobertura media sería ideal para ti.';
+                } else if (coverage === 'Alta (más del 50%)') {
+                    recommendationText.innerHTML = 'Para una cobertura alta, un tono Negro Intenso es perfecto o si quieres atreverte a más mezcla con un Castaño Oscuro para mayor luminosidad.';
+                } else if (coverage === 'Baja (menos del 25% de canas)') {
+                    recommendationText.innerHTML = 'Un tono Castaño Claro con cobertura baja resaltará y aportará luz.';
+                }
+            } else if (color === 'Rojizo o Teñido') {
+                if (coverage === 'Ninguna, solo quiero brillo') {
+                    recommendationText.innerHTML = 'Un tono Caoba Claro con cobertura baja resaltará tus reflejos rojizos.';
+                } else if (coverage === 'Media (entre 25% y 50%)') {
+                    recommendationText.innerHTML = 'Un tono Castaño Oscuro mezclado con un Caoba Claro con cobertura media sería ideal para ti.';
+                } else if (coverage === 'Alta (más del 50%)') {
+                    recommendationText.innerHTML = 'Para una cobertura alta, un tono Negro Intenso es perfecto.';
+                } else if (coverage === 'Baja (menos del 25% de canas)') {
+                    recommendationText.innerHTML = 'Un tono Castaño Claro con cobertura baja resaltará tus reflejos rojizos y chocolate.';
+                }
+            } else {
+                recommendationText.innerHTML = 'Por favor, selecciona opciones en ambas preguntas para recibir una recomendación.';
+            }
+
+            recommendation.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
